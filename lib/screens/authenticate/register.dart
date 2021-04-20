@@ -1,7 +1,11 @@
 import 'package:brew_flutter/services/auth.dart';
+import 'package:brew_flutter/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
+  final Function toggleSIgnInRegister;
+  Register({this.toggleSIgnInRegister});
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -22,7 +26,9 @@ class _RegisterState extends State<Register> {
         title: Text('SignUp'),
         actions: <Widget>[
           ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                widget.toggleSIgnInRegister();
+              },
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                 (Set<MaterialState> states) {
@@ -46,6 +52,7 @@ class _RegisterState extends State<Register> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration: textDecoration.copyWith(hintText: 'Email'),
                   onChanged: (value) {
                     setState(() {
                       email = value;
@@ -56,6 +63,7 @@ class _RegisterState extends State<Register> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration: textDecoration.copyWith(hintText: 'Password'),
                   obscureText: true,
                   onChanged: (value) {
                     setState(() {
